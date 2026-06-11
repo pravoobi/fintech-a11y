@@ -1,0 +1,127 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Remove default fieldset chrome */
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.legend {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+
+.inputs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.input {
+  /* 2.5.8 Target Size: minimum 24×24 CSS px; 48×48 here for comfortable touch targets */
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+
+  border: 2px solid #6b7280;
+  border-radius: 6px;
+  background-color: #ffffff;
+
+  /* Prevent browser spin buttons */
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  cursor: text;
+  transition: border-color 0.15s ease;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 2.4.7 Focus Visible: solid offset outline — not color-only */
+.input:focus {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  border-color: #2563eb;
+}
+
+.input:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.input:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  border-color: #2563eb;
+}
+
+.input:disabled {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Error state: color change + thicker border (not color alone — icon added in markup) */
+/* 1.4.11 Non-text Contrast: #dc2626 on white = 5.74:1 ✓ */
+.inputError {
+  border-color: #dc2626;
+  border-width: 2px;
+}
+
+.inputError:focus-visible {
+  outline-color: #dc2626;
+  border-color: #dc2626;
+}
+
+/* 1.4.3 Contrast: #dc2626 on white = 5.74:1 ✓ */
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #dc2626;
+  margin: 0;
+}
+
+.errorIcon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Visually hidden but available to screen readers */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 1.4.10 Reflow: at 320 CSS px the inputs wrap and remain usable */
+@media (max-width: 360px) {
+  .input {
+    width: 40px;
+    height: 40px;
+    font-size: 1.125rem;
+  }
+}

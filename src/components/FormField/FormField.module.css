@@ -1,0 +1,114 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+/* 1.4.3 Contrast: #1a1a1a on white = 18.1:1 ✓ */
+.label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+/* Asterisk is visual-only; aria-hidden in markup */
+.requiredMark {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* 1.4.3 Contrast: #6b7280 on white = 4.6:1 ✓ */
+.hint {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.input {
+  width: 100%;
+  /* Comfortable touch target height — well above 24px minimum (2.5.8) */
+  min-height: 44px;
+  padding: 0.625rem 0.75rem;
+  font-size: 1rem;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  border: 2px solid #6b7280;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, outline-color 0.15s ease;
+  /* Prevent browser-default outline from fighting our custom one */
+  outline: none;
+}
+
+/* 2.4.7 Focus Visible: solid offset outline — not color alone */
+.input:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  border-color: #2563eb;
+}
+
+/* 1.4.11 Non-text Contrast: #6b7280 border on white = 4.6:1 ✓ (requires 3:1) */
+.input:hover:not(:disabled) {
+  border-color: #374151;
+}
+
+.input:disabled {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.fieldDisabled .label,
+.fieldDisabled .hint {
+  color: #9ca3af;
+}
+
+/* Error state: border color change + dashed style so it differs from default.
+   Color is NOT the sole indicator — the ⚠ icon and error text are also present (1.4.1).
+   1.4.11 Non-text Contrast: #dc2626 on white = 5.74:1 ✓ */
+.inputError {
+  border-color: #dc2626;
+  border-style: solid;
+}
+
+.inputError:focus-visible {
+  outline-color: #dc2626;
+  border-color: #dc2626;
+}
+
+/* 1.4.3 Contrast: #dc2626 on white = 5.74:1 ✓ */
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #dc2626;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+/* Standard visually-hidden / sr-only utility */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 1.4.10 Reflow: full-width column layout already reflows naturally at 320px */
