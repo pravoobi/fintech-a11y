@@ -1,0 +1,243 @@
+/* ─── Field wrapper ──────────────────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  position: relative;
+}
+
+.fieldDisabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a1a;           /* 18.1:1 ✓ (1.4.3) */
+  line-height: 1.4;
+}
+
+.requiredMark {
+  color: #dc2626;
+}
+
+/* ─── Hint ───────────────────────────────────────────────────────────────────── */
+
+.hint {
+  font-size: 0.8125rem;
+  color: #6b7280;           /* 4.6:1 ✓ (1.4.3) */
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ─── Input wrapper ──────────────────────────────────────────────────────────── */
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  transition: border-color 0.15s;
+}
+
+.inputWrapper:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.inputWrapperError {
+  border-color: #dc2626;
+}
+
+.inputWrapperError:focus-within {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+/* ─── Input ──────────────────────────────────────────────────────────────────── */
+
+.input {
+  flex: 1;
+  /* min-height 44px — above 24×24 target size (2.5.8) */
+  min-height: 2.75rem;
+  padding: 0 2.5rem 0 0.75rem;  /* right padding for chevron */
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #1a1a1a;           /* 18.1:1 ✓ (1.4.3) */
+  outline: none;
+  width: 100%;
+  cursor: text;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* Focus ring is on the wrapper via :focus-within — suppress default on input */
+.input:focus {
+  outline: none;
+}
+
+/* ─── Clear button ───────────────────────────────────────────────────────────── */
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 28×28 — inside the input; full 44px touch target covered by input height */
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.15s, background-color 0.15s;
+  position: absolute;
+  right: 2rem;              /* sits left of the chevron */
+}
+
+.clearButton:hover {
+  color: #1a1a1a;
+  background-color: #f3f4f6;
+}
+
+/* Clear button has tabIndex=-1 so no focus ring needed for keyboard — pointer only */
+
+/* ─── Chevron ─────────────────────────────────────────────────────────────────── */
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0.625rem;
+  pointer-events: none;
+  color: #6b7280;
+  transition: transform 0.15s;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ─── Listbox ─────────────────────────────────────────────────────────────────── */
+
+.listbox {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  background: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-height: 16rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.listboxOpen {
+  display: block;
+}
+
+/* ─── Option ─────────────────────────────────────────────────────────────────── */
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* min-height 44px — above 24×24 target size (2.5.8) */
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
+  font-size: 0.9375rem;
+  color: #1a1a1a;           /* 18.1:1 ✓ (1.4.3) */
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.option:hover {
+  background-color: #f3f4f6;
+}
+
+.optionHighlighted {
+  background-color: #eff6ff;
+  color: #1d4ed8;           /* 7.37:1 ✓ (1.4.3) */
+}
+
+.optionSelected {
+  font-weight: 600;
+}
+
+.selectedMark {
+  color: #2563eb;           /* 5.92:1 ✓ (1.4.3) */
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.noResults {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.875rem;
+  font-size: 0.9375rem;
+  color: #6b7280;           /* 4.6:1 ✓ (1.4.3) */
+  cursor: default;
+}
+
+/* ─── Error ──────────────────────────────────────────────────────────────────── */
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: #dc2626;           /* 5.74:1 ✓ (1.4.3) */
+  margin: 0;
+  line-height: 1.4;
+}
+
+.errorIcon {
+  flex-shrink: 0;
+}
+
+/* ─── Screen-reader only ─────────────────────────────────────────────────────── */
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Reflow — 320 CSS px (1.4.10) ──────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .listbox {
+    max-height: 12rem;
+  }
+}
