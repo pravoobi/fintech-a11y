@@ -31,6 +31,7 @@ Each component ships with three things that together make this more than a "nice
 | **Toast** | 4.1.3 · 2.2.1 Timing Adjustable · 1.4.1 · 2.5.8 |
 | **Combobox** | 4.1.2 Name Role Value · 2.1.1 Keyboard · 4.1.3 · 1.3.1 |
 | **DateInput** | 1.3.1 Info & Relationships · 3.3.1 Error Identification · 3.3.7 Redundant Entry · 2.1.1 |
+| **Alert** | 4.1.3 Status Messages · 1.4.1 Use of Color · 1.3.1 · 2.5.8 · 4.1.2 |
 
 ---
 
