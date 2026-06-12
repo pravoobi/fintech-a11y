@@ -1,0 +1,113 @@
+/* ─── Nav / List ─────────────────────────────────────────────────────────────── */
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Base control (shared by page buttons and arrows) ───────────────────────── */
+
+/* min 44×44px — above 24×24 target size (2.5.8) */
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.25rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1a1a1a;           /* 18.1:1 ✓ (1.4.3) */
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.control:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.control:focus-visible {
+  outline: 3px solid #2563eb;   /* 5.92:1 ✓ (1.4.11) */
+  outline-offset: 2px;
+}
+
+/* ─── Current page (aria-current="page") ────────────────────────────────────── */
+
+/* Current page: filled background + bold text — not color alone (1.4.1) */
+.current {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;           /* 5.92:1 on #2563eb ✓ (1.4.3) */
+  font-weight: 700;
+  cursor: default;
+}
+
+.current:focus-visible {
+  outline-color: #1d4ed8;
+}
+
+/* ─── Disabled (prev/next at boundary) ──────────────────────────────────────── */
+
+.control:disabled:not(.current) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Arrow buttons (‹ ›) ────────────────────────────────────────────────────── */
+
+.arrow {
+  font-size: 1.25rem;
+  color: #374151;
+}
+
+/* ─── Ellipsis ───────────────────────────────────────────────────────────────── */
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  user-select: none;
+}
+
+/* ─── Screen-reader only ─────────────────────────────────────────────────────── */
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Reflow — 320 CSS px (1.4.10) ──────────────────────────────────────────── */
+
+@media (max-width: 360px) {
+  .control {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    font-size: 0.8125rem;
+  }
+
+  .ellipsis {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+  }
+}

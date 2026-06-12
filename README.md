@@ -32,6 +32,9 @@ Each component ships with three things that together make this more than a "nice
 | **Combobox** | 4.1.2 Name Role Value · 2.1.1 Keyboard · 4.1.3 · 1.3.1 |
 | **DateInput** | 1.3.1 Info & Relationships · 3.3.1 Error Identification · 3.3.7 Redundant Entry · 2.1.1 |
 | **Alert** | 4.1.3 Status Messages · 1.4.1 Use of Color · 1.3.1 · 2.5.8 · 4.1.2 |
+| **Pagination** | 4.1.2 Name Role Value · 4.1.3 Status Messages · 1.4.1 · 2.5.8 · 1.3.1 |
+| **Tabs** | 4.1.2 Name Role Value · 2.1.1 Keyboard · 1.3.1 · 2.4.3 Focus Order · 1.4.1 |
+| **Tooltip** | 1.4.13 Content on Hover or Focus · 4.1.2 · 2.1.1 · 1.4.3 |
 
 ---
 

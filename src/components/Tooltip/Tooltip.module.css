@@ -1,0 +1,102 @@
+/* ─── Wrapper ────────────────────────────────────────────────────────────────── */
+
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/* ─── Tooltip bubble ─────────────────────────────────────────────────────────── */
+
+.tooltip {
+  position: absolute;
+  z-index: 100;
+  padding: 0.375rem 0.625rem;
+  background: #1a1a1a;          /* near-black */
+  color: #ffffff;               /* #ffffff on #1a1a1a = 18.1:1 ✓ (1.4.3) */
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  border-radius: 4px;
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: auto;         /* allow mouse to enter tooltip (1.4.13 — Hoverable) */
+
+  /* Hidden state — visibility+opacity, NOT display:none, so aria-describedby
+     can still resolve the text content when the trigger is focused */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s, visibility 0.15s;
+}
+
+/* Arrow shared styles */
+.tooltip::after {
+  content: '';
+  position: absolute;
+  border: 5px solid transparent;
+}
+
+/* ─── Visible state ──────────────────────────────────────────────────────────── */
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ─── Placement: top (default) ───────────────────────────────────────────────── */
+
+.top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: #1a1a1a;
+}
+
+/* ─── Placement: bottom ──────────────────────────────────────────────────────── */
+
+.bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: #1a1a1a;
+}
+
+/* ─── Placement: left ────────────────────────────────────────────────────────── */
+
+.left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left::after {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: #1a1a1a;
+}
+
+/* ─── Placement: right ───────────────────────────────────────────────────────── */
+
+.right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right::after {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: #1a1a1a;
+}
