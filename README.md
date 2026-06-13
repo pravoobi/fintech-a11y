@@ -35,6 +35,10 @@ Each component ships with three things that together make this more than a "nice
 | **Pagination** | 4.1.2 Name Role Value · 4.1.3 Status Messages · 1.4.1 · 2.5.8 · 1.3.1 |
 | **Tabs** | 4.1.2 Name Role Value · 2.1.1 Keyboard · 1.3.1 · 2.4.3 Focus Order · 1.4.1 |
 | **Tooltip** | 1.4.13 Content on Hover or Focus · 4.1.2 · 2.1.1 · 1.4.3 |
+| **Accordion** | 4.1.2 Name Role Value · 1.3.1 · 2.1.1 · 1.4.1 · 2.5.8 |
+| **SkipLink** | 2.4.1 Bypass Blocks · 2.4.7 Focus Visible · 1.4.3 |
+| **RadioGroup** | 1.3.1 Info & Relationships · 2.1.1 Keyboard · 3.3.1 · 4.1.2 · 2.5.8 |
+| **Checkbox** | 1.3.1 · 1.4.1 Use of Color · 2.1.1 Keyboard · 2.5.8 Target Size · 3.3.1 · 4.1.2 · 4.1.3 |
 
 ---
 

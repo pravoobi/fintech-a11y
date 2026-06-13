@@ -1,0 +1,135 @@
+/* ─── Accordion container ────────────────────────────────────────────────────── */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ─── Item ───────────────────────────────────────────────────────────────────── */
+
+.item {
+  border-bottom: 1.5px solid var(--color-border-subtle);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+/* ─── Heading ────────────────────────────────────────────────────────────────── */
+
+/* Reset heading margins/styles — the button carries all the visual weight */
+.heading {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* ─── Trigger button ─────────────────────────────────────────────────────────── */
+
+/* min 44px tall — above 24×24 target size (2.5.8) */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: none;
+  text-align: left;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);               /* 18.1:1 ✓ (1.4.3) */
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.trigger:hover {
+  background: var(--color-surface-subtle);
+}
+
+.trigger:focus-visible {
+  outline: 3px solid var(--color-primary);   /* 5.92:1 ✓ (1.4.11) */
+  outline-offset: -3px;         /* inset so it doesn't overlap neighbouring items */
+  border-radius: 0;
+}
+
+/* Open state — background tint reinforces expanded (not color alone — icon + aria-expanded carry state) */
+.triggerOpen {
+  background: var(--color-surface-subtle);
+}
+
+/* ─── Trigger label ──────────────────────────────────────────────────────────── */
+
+.triggerLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Chevron icon ───────────────────────────────────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.75rem;
+  font-size: 1.125rem;
+  color: var(--color-text-subtle);
+  /* Rotated 90° = pointing down (closed); 270° = pointing up (open) */
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.iconOpen {
+  transform: rotate(270deg);
+}
+
+/* ─── Panel ──────────────────────────────────────────────────────────────────── */
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelInner {
+  padding: 0.75rem 1rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-body);          /* 10.7:1 ✓ (1.4.3) */
+  border-top: 1.5px solid var(--color-border-subtle);
+}
+
+.panelInner p {
+  margin: 0 0 0.75rem;
+}
+
+.panelInner p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Reflow — 320 CSS px (1.4.10) ──────────────────────────────────────────── */
+
+@media (max-width: 360px) {
+  .trigger {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .panelInner {
+    padding: 0.625rem 0.75rem 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .icon {
+    transition: none;
+  }
+}

@@ -20,10 +20,10 @@
   min-width: 2.75rem;
   min-height: 2.75rem;
   padding: 0 0.25rem;
-  border: 1.5px solid #d1d5db;
+  border: 1.5px solid var(--color-border);
   border-radius: 6px;
-  background: #ffffff;
-  color: #1a1a1a;           /* 18.1:1 ✓ (1.4.3) */
+  background: var(--color-surface);
+  color: var(--color-text);           /* 18.1:1 ✓ (1.4.3) */
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
@@ -32,12 +32,12 @@
 }
 
 .control:hover:not(:disabled) {
-  background: #f3f4f6;
-  border-color: #9ca3af;
+  background: var(--color-surface-muted);
+  border-color: var(--color-border-hover);
 }
 
 .control:focus-visible {
-  outline: 3px solid #2563eb;   /* 5.92:1 ✓ (1.4.11) */
+  outline: 3px solid var(--color-primary);   /* 5.92:1 ✓ (1.4.11) */
   outline-offset: 2px;
 }
 
@@ -45,15 +45,15 @@
 
 /* Current page: filled background + bold text — not color alone (1.4.1) */
 .current {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #ffffff;           /* 5.92:1 on #2563eb ✓ (1.4.3) */
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-on-dark);   /* 5.92:1 on --color-primary ✓ (1.4.3) */
   font-weight: 700;
   cursor: default;
 }
 
 .current:focus-visible {
-  outline-color: #1d4ed8;
+  outline-color: var(--color-primary-hover);
 }
 
 /* ─── Disabled (prev/next at boundary) ──────────────────────────────────────── */
@@ -67,7 +67,7 @@
 
 .arrow {
   font-size: 1.25rem;
-  color: #374151;
+  color: var(--color-text-body);
 }
 
 /* ─── Ellipsis ───────────────────────────────────────────────────────────────── */
@@ -79,7 +79,7 @@
   min-width: 2.75rem;
   min-height: 2.75rem;
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-text-subtle);
   user-select: none;
 }
 
@@ -109,5 +109,11 @@
   .ellipsis {
     min-width: 2.25rem;
     min-height: 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
   }
 }

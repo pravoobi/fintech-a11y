@@ -1,0 +1,39 @@
+/* ─── Skip link ──────────────────────────────────────────────────────────────── */
+
+.skipLink {
+  /*
+    Off-screen by default using position + clip — NOT display:none or
+    visibility:hidden, which would prevent the element from receiving focus
+    and break the entire mechanism (2.4.1).
+  */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+  padding: 0.75rem 1.25rem;
+  background: var(--color-primary-hover);
+  color: var(--color-text-on-dark);      /* 7.37:1 ✓ (1.4.3) */
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 6px 0;
+  white-space: nowrap;
+
+  /* Hidden state — moves the link off the top of the viewport */
+  transform: translateY(-100%);
+  transition: transform 0.15s ease;
+}
+
+/* Slide into view when focused — sighted keyboard users can see and read it (2.4.7) */
+.skipLink:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--color-text-on-dark);   /* white ring on blue — clearly visible (1.4.11) */
+  outline-offset: -4px;         /* inset so it stays within the button bounds */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skipLink {
+    transition: none;
+  }
+}

@@ -11,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--color-border-subtle);
 }
 
 /* ─── Tab button ─────────────────────────────────────────────────────────────── */
@@ -31,37 +31,37 @@
   margin-bottom: -2px;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #6b7280;           /* 4.6:1 ✓ (1.4.3) */
+  color: var(--color-text-subtle);    /* 4.6:1 ✓ (1.4.3) */
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.15s, border-color 0.15s;
 }
 
 .tab:hover:not(:disabled) {
-  color: #1a1a1a;
-  border-bottom-color: #d1d5db;
+  color: var(--color-text);
+  border-bottom-color: var(--color-border);
 }
 
 /* ─── Selected tab ───────────────────────────────────────────────────────────── */
 
 /* Selected: bold weight + blue underline — not color alone (1.4.1) */
 .tabSelected {
-  color: #2563eb;           /* 5.92:1 ✓ on white (1.4.3) */
+  color: var(--color-primary);        /* 5.92:1 ✓ on surface (1.4.3) */
   font-weight: 700;
-  border-bottom-color: #2563eb;
+  border-bottom-color: var(--color-primary);
 }
 
 /* Target [aria-selected="true"] directly as a belt-and-braces selector */
 .tab[aria-selected='true'] {
-  color: #2563eb;
+  color: var(--color-primary);
   font-weight: 700;
-  border-bottom-color: #2563eb;
+  border-bottom-color: var(--color-primary);
 }
 
 /* ─── Focus visible ──────────────────────────────────────────────────────────── */
 
 .tab:focus-visible {
-  outline: 3px solid #2563eb;   /* 5.92:1 ✓ (1.4.11) */
+  outline: 3px solid var(--color-primary);   /* 5.92:1 ✓ (1.4.11) */
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -78,13 +78,13 @@
 
 .panel {
   padding: 1.25rem 0;
-  color: #1a1a1a;
+  color: var(--color-text);
   font-size: 0.875rem;
   line-height: 1.6;
 }
 
 .panel:focus-visible {
-  outline: 3px solid #2563eb;
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -100,5 +100,11 @@
   .tab {
     padding: 0 0.75rem;
     font-size: 0.8125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: none;
   }
 }

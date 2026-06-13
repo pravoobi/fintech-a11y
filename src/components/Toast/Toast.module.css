@@ -23,7 +23,7 @@
   padding: 0.75rem 0.75rem 0.75rem 1rem;
   border-radius: 8px;
   border-left: 4px solid transparent;
-  background: #ffffff;
+  background: var(--color-surface);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.08);
   pointer-events: all;
   /* Animate in from the right */
@@ -43,44 +43,44 @@
 
 /* ─── Severity variants ──────────────────────────────────────────────────────── */
 
-/* Info — #2563eb on white = 5.92:1 ✓ (1.4.3) */
+/* Info — --color-primary on surface = 5.92:1 ✓ (1.4.3) */
 .info {
-  border-left-color: #2563eb;
-  color: #1e40af;
+  border-left-color: var(--color-primary);
+  color: var(--color-info-dark);
 }
 
 .info .iconWrapper {
-  color: #2563eb;
+  color: var(--color-primary);
 }
 
-/* Success — #16a34a on white = 5.44:1 ✓ (1.4.3) */
+/* Success — --color-success on surface = 5.44:1 ✓ (1.4.3) */
 .success {
-  border-left-color: #16a34a;
-  color: #15803d;
+  border-left-color: var(--color-success);
+  color: var(--color-success-dark);
 }
 
 .success .iconWrapper {
-  color: #16a34a;
+  color: var(--color-success);
 }
 
-/* Warning — #d97706 on white = 3.13:1 for large/bold text ✓; body text uses darker shade */
+/* Warning — border only; text uses darker shade for body copy */
 .warning {
-  border-left-color: #d97706;
-  color: #92400e;            /* #92400e on white = 7.5:1 ✓ (1.4.3) */
+  border-left-color: var(--color-warning);
+  color: var(--color-warning-dark);   /* 7.50:1 ✓ (1.4.3) */
 }
 
 .warning .iconWrapper {
-  color: #d97706;
+  color: var(--color-warning);
 }
 
-/* Error — #dc2626 on white = 5.74:1 ✓ (1.4.3) */
+/* Error — --color-error on surface = 5.74:1 ✓ (1.4.3) */
 .error {
-  border-left-color: #dc2626;
-  color: #991b1b;            /* #991b1b on white = 8.05:1 ✓ (1.4.3) */
+  border-left-color: var(--color-error);
+  color: var(--color-error-dark);     /* 8.05:1 ✓ (1.4.3) */
 }
 
 .error .iconWrapper {
-  color: #dc2626;
+  color: var(--color-error);
 }
 
 /* ─── Icon ───────────────────────────────────────────────────────────────────── */
@@ -132,7 +132,7 @@
 
 .dismissButton:focus-visible {
   opacity: 1;
-  outline: 3px solid #2563eb;  /* 5.92:1 ✓ (1.4.11) */
+  outline: 3px solid var(--color-primary);  /* 5.92:1 ✓ (1.4.11) */
   outline-offset: 2px;
 }
 
@@ -158,5 +158,15 @@
     bottom: 0.75rem;
     left: 0.75rem;
     max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+
+  .dismissButton {
+    transition: none;
   }
 }

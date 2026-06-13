@@ -5,24 +5,24 @@
   width: 100%;
 }
 
-/* 1.4.3 Contrast: #1a1a1a on white = 18.1:1 ✓ */
+/* 1.4.3 Contrast: --color-text on surface = 18.1:1 ✓ */
 .label {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--color-text);
   line-height: 1.4;
 }
 
 /* Asterisk is visual-only; aria-hidden in markup */
 .requiredMark {
-  color: #dc2626;
+  color: var(--color-error);
   font-weight: 700;
 }
 
-/* 1.4.3 Contrast: #6b7280 on white = 4.6:1 ✓ */
+/* 1.4.3 Contrast: --color-text-subtle on surface = 4.6:1 ✓ */
 .hint {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-text-subtle);
   margin: 0;
   line-height: 1.4;
 }
@@ -33,9 +33,9 @@
   min-height: 44px;
   padding: 0.625rem 0.75rem;
   font-size: 1rem;
-  color: #1a1a1a;
-  background-color: #ffffff;
-  border: 2px solid #6b7280;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border-control);
   border-radius: 6px;
   box-sizing: border-box;
   transition: border-color 0.15s ease, outline-color 0.15s ease;
@@ -45,49 +45,49 @@
 
 /* 2.4.7 Focus Visible: solid offset outline — not color alone */
 .input:focus-visible {
-  outline: 3px solid #2563eb;
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
-  border-color: #2563eb;
+  border-color: var(--color-primary);
 }
 
-/* 1.4.11 Non-text Contrast: #6b7280 border on white = 4.6:1 ✓ (requires 3:1) */
+/* 1.4.11 Non-text Contrast: --color-border-control on surface = 4.6:1 ✓ */
 .input:hover:not(:disabled) {
-  border-color: #374151;
+  border-color: var(--color-text-body);
 }
 
 .input:disabled {
-  background-color: #f3f4f6;
-  border-color: #d1d5db;
-  color: #9ca3af;
+  background-color: var(--color-surface-muted);
+  border-color: var(--color-border);
+  color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
 .fieldDisabled .label,
 .fieldDisabled .hint {
-  color: #9ca3af;
+  color: var(--color-text-disabled);
 }
 
 /* Error state: border color change + dashed style so it differs from default.
    Color is NOT the sole indicator — the ⚠ icon and error text are also present (1.4.1).
-   1.4.11 Non-text Contrast: #dc2626 on white = 5.74:1 ✓ */
+   1.4.11 Non-text Contrast: --color-error on surface = 5.74:1 ✓ */
 .inputError {
-  border-color: #dc2626;
+  border-color: var(--color-error);
   border-style: solid;
 }
 
 .inputError:focus-visible {
-  outline-color: #dc2626;
-  border-color: #dc2626;
+  outline-color: var(--color-error);
+  border-color: var(--color-error);
 }
 
-/* 1.4.3 Contrast: #dc2626 on white = 5.74:1 ✓ */
+/* 1.4.3 Contrast: --color-error on surface = 5.74:1 ✓ */
 .error {
   display: flex;
   align-items: flex-start;
   gap: 0.375rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #dc2626;
+  color: var(--color-error);
   margin: 0;
   line-height: 1.4;
 }
@@ -112,3 +112,9 @@
 }
 
 /* 1.4.10 Reflow: full-width column layout already reflows naturally at 320px */
+
+@media (prefers-reduced-motion: reduce) {
+  .input {
+    transition: none;
+  }
+}

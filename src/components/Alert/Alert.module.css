@@ -14,32 +14,32 @@
 
 /* ─── Variants ───────────────────────────────────────────────────────────────── */
 
-/* info — border #2563eb, text #1e3a5f on #eff6ff — 9.1:1 ✓ (1.4.3) */
+/* info — --color-info-text on --color-surface-primary = 9.1:1 ✓ (1.4.3) */
 .info {
-  background: #eff6ff;
-  border-left-color: #2563eb;
-  color: #1e3a5f;
+  background: var(--color-surface-primary);
+  border-left-color: var(--color-primary);
+  color: var(--color-info-text);
 }
 
-/* success — border #16a34a, text #14532d on #f0fdf4 — 9.5:1 ✓ (1.4.3) */
+/* success — --color-success-text on --color-success-surface = 9.5:1 ✓ (1.4.3) */
 .success {
-  background: #f0fdf4;
-  border-left-color: #16a34a;
-  color: #14532d;
+  background: var(--color-success-surface);
+  border-left-color: var(--color-success);
+  color: var(--color-success-text);
 }
 
-/* warning — border #d97706, text #78350f on #fffbeb — 7.2:1 ✓ (1.4.3) */
+/* warning — --color-warning-text on --color-warning-surface = 7.2:1 ✓ (1.4.3) */
 .warning {
-  background: #fffbeb;
-  border-left-color: #d97706;
-  color: #78350f;
+  background: var(--color-warning-surface);
+  border-left-color: var(--color-warning);
+  color: var(--color-warning-text);
 }
 
-/* error — border #dc2626, text #7f1d1d on #fef2f2 — 9.7:1 ✓ (1.4.3) */
+/* error — --color-error-text on --color-error-surface = 8.86:1 ✓ (1.4.3) */
 .error {
-  background: #fef2f2;
-  border-left-color: #dc2626;
-  color: #7f1d1d;
+  background: var(--color-error-surface);
+  border-left-color: var(--color-error);
+  color: var(--color-error-text);
 }
 
 /* ─── Icon ───────────────────────────────────────────────────────────────────── */
@@ -125,5 +125,11 @@
   .alert {
     padding: 0.75rem;
     gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dismiss {
+    transition: none;
   }
 }
