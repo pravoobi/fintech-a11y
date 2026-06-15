@@ -135,6 +135,43 @@
   text-align: center;
 }
 
+/* ─── Row selection ──────────────────────────────────────────────────────────── */
+
+/* Narrow column — 44 px wide to give the checkbox a generous click target (2.5.8) */
+.checkboxCell {
+  width: 2.75rem;
+  padding: 0 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Selected row: left-border accent + bg tint.
+   The checked checkbox is the non-color indicator; the border-left reinforces it
+   visually without relying on color alone (1.4.1). */
+.trSelected {
+  background-color: var(--color-surface-primary) !important;
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.trSelected:hover {
+  background-color: var(--color-surface-primary-deep) !important;
+}
+
+/* Checkbox — native element preserves AT role + state announcements (4.1.2) */
+.rowCheckbox {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0 auto;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.rowCheckbox:focus-visible {
+  outline: 3px solid var(--color-primary);   /* 5.92:1 ✓ (1.4.11) */
+  outline-offset: 2px;
+}
+
 /* ─── Screen-reader only ─────────────────────────────────────────────────────── */
 
 .srOnly {

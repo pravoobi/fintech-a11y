@@ -160,6 +160,59 @@ export const HorizontalScroll: Story = {
   },
 };
 
+// ─── Row selection ────────────────────────────────────────────────────────────
+
+export const WithRowSelection: Story = {
+  name: 'Row Selection',
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Row-selection layer added to the sortable table. Key accessibility properties:
+
+- **4.1.2** — Each row checkbox has an accessible name: "Select Alice Johnson" / "Deselect Alice Johnson" (flips based on state). The header checkbox reads "Select all rows" or "Deselect all rows".
+- **4.1.2 indeterminate** — When only some rows are selected, the "Select all" checkbox gets the \`indeterminate\` DOM property set via \`useRef\`, which AT announces as "mixed". This is a DOM property, not a JSX attribute, so it requires \`useEffect\`.
+- **1.4.1** — Selected rows use a left-border accent (\`box-shadow: inset 3px 0 0 var(--color-primary)\`) in addition to the background tint — selection state is not communicated by color alone.
+- **4.1.3** — Every selection change is announced via the shared \`role="status"\` live region: "Alice Johnson selected. 2 rows selected." / "All 5 rows selected." — without moving keyboard focus.
+- **2.5.8** — The checkbox column is 44 px wide; row checkboxes are in a \`<td>\` with the full row height as the click target.
+        `.trim(),
+      },
+    },
+  },
+  render: () => {
+    const [sortState, setSortState] = useState<SortState>({ key: 'date', direction: 'descending' });
+    const [selectedRows, setSelectedRows] = useState<(string | number)[]>([]);
+
+    const sorted = [...TRANSACTION_ROWS].sort((a, b) => {
+      const aVal = String(a[sortState.key] ?? '');
+      const bVal = String(b[sortState.key] ?? '');
+      const cmp = aVal.localeCompare(bVal);
+      return sortState.direction === 'ascending' ? cmp : -cmp;
+    });
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <DataTable
+          caption="Recent transactions"
+          columns={TRANSACTION_COLUMNS}
+          rows={sorted}
+          sortState={sortState}
+          onSort={setSortState}
+          selectable
+          selectedRows={selectedRows}
+          onSelectionChange={setSelectedRows}
+          getRowLabel={(r) => String(r.payee)}
+        />
+        <p style={{ margin: 0, fontSize: '0.8125rem', color: '#6b7280' }}>
+          {selectedRows.length === 0
+            ? 'No rows selected.'
+            : `${selectedRows.length} row${selectedRows.length !== 1 ? 's' : ''} selected — IDs: ${selectedRows.join(', ')}`}
+        </p>
+      </div>
+    );
+  },
+};
+
 // ─── Common Mistake ────────────────────────────────────────────────────────────
 // Intentionally inaccessible. Violations are documented. Do not fix this component.
 

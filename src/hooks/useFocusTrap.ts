@@ -37,6 +37,11 @@ export function useFocusTrap<T extends HTMLElement>(
   const containerRef = useRef<T>(null);
   // Capture the element that had focus before the trap activated so we can restore it.
   const returnFocusRef = useRef<Element | null>(null);
+  // Keep onEscape in a ref so the keydown handler always calls the latest version
+  // without adding it to the effect deps (which would re-run the effect — and
+  // re-initialize focus — on every render where onEscape is a new reference).
+  const onEscapeRef = useRef(onEscape);
+  onEscapeRef.current = onEscape;
 
   useEffect(() => {
     if (!isActive) return;
@@ -56,7 +61,7 @@ export function useFocusTrap<T extends HTMLElement>(
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
         e.preventDefault();
-        onEscape();
+        onEscapeRef.current();
         return;
       }
 
@@ -94,7 +99,7 @@ export function useFocusTrap<T extends HTMLElement>(
         (returnFocusRef.current as HTMLElement).focus();
       }
     };
-  }, [isActive, onEscape, initialFocusRef]);
+  }, [isActive, initialFocusRef]);
 
   return containerRef;
 }

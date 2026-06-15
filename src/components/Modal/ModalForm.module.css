@@ -1,0 +1,206 @@
+/* ─── Field group ─────────────────────────────────────────────────────────────── */
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.fieldGroup:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);           /* 18.1:1 ✓ (1.4.3) */
+  line-height: 1.4;
+}
+
+.requiredMark {
+  color: var(--color-error);
+}
+
+/* ─── Hint ───────────────────────────────────────────────────────────────────── */
+
+.hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-subtle);    /* 4.6:1 ✓ (1.4.3) */
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ─── Input ──────────────────────────────────────────────────────────────────── */
+
+.input {
+  display: block;
+  width: 100%;
+  /* min-height 44px — above 24×24 target size (2.5.8) */
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: var(--color-text);           /* 18.1:1 ✓ (1.4.3) */
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-control);  /* 4.6:1 ✓ (1.4.11) */
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Focus ring handled by .input:focus — suppress :focus-visible redundancy */
+.input:focus-visible {
+  outline: none;
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.inputError:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+/* ─── Inline error ───────────────────────────────────────────────────────────── */
+
+/* min-height prevents layout shift when error text appears/disappears */
+.fieldError {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  min-height: 1.25rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-error-dark);     /* 8.05:1 ✓ (1.4.3) */
+  line-height: 1.4;
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  margin-top: 0.0625rem;
+}
+
+/* ─── Error summary ──────────────────────────────────────────────────────────── */
+
+/* Appears above the form fields after a failed submit attempt.
+   Focus moves here — AT reads the heading on focus (3.3.1). */
+.errorSummary {
+  margin-bottom: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-error-surface);
+  border: 1.5px solid var(--color-error);
+  border-radius: 6px;
+}
+
+/* Remove default :focus outline — this element is focused programmatically only */
+.errorSummaryTitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-error-text);     /* 8.86:1 ✓ (1.4.3) */
+  outline: none;
+}
+
+.errorSummaryList {
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-error-text);
+  line-height: 1.5;
+}
+
+/* ─── Action row ─────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* min 44×44 px (2.5.8) */
+.cancelButton {
+  padding: 0.5rem 1.25rem;
+  min-height: 2.75rem;
+  background: var(--color-surface);
+  color: var(--color-text-body);      /* 10.7:1 ✓ (1.4.3) */
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.cancelButton:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-border-hover);
+}
+
+.cancelButton:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.submitButton {
+  padding: 0.5rem 1.25rem;
+  min-height: 2.75rem;
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);   /* 7.37:1 ✓ (1.4.3) */
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.submitButton:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.submitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ─── Reflow — 320 CSS px (1.4.10) ──────────────────────────────────────────── */
+
+@media (max-width: 360px) {
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancelButton,
+  .submitButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input,
+  .cancelButton,
+  .submitButton {
+    transition: none;
+  }
+}
